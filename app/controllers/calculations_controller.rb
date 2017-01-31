@@ -32,8 +32,20 @@ class CalculationsController < ApplicationController
 
     @sqrt = @num.to_f ** 0.5
 
-    render("calculations/sqrt_form.html.erb")
+    render("calculations/square_root.html.erb")
 
+  end
+
+  def payment
+
+    @apr = params["apr"].to_f
+    @rate_percent = @apr / 10000
+    @r = @rate_percent/12
+    @years = params["years"].to_f
+    @principal = params["principal"].to_f
+    @monthlypay =  @principal * @r / (1 - (1 + @r)**(-@years * 12.0))
+
+    render("calculations/payment.html.erb")
   end
 
 end

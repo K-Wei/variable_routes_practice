@@ -7,7 +7,8 @@ Rails.application.routes.draw do
 
   get("/square_root_form/", { :controller => "calculations", :action => "sqrt_form"})
 
-  get("/calculate_square_root/", { :controller => "calculations", :action => "sqrt"})
+  get("/square_root/:num", { :controller => "calculations", :action => "sqrt"})
 
-  # get("/payment/")
+  get("/payment/:apr/:years/:principal", { :controller => "calculations", :action => "payment"})
+
 end
